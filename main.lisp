@@ -17,6 +17,8 @@
 
 (in-package :alice)
 
+(load "bayes.lisp")
+
 (defvar *connection*)
 (defvar *connected-channels*)
 
