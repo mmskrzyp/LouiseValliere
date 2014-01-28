@@ -52,7 +52,7 @@
                        "Alice Margatroid, kłaniam się ;)."
                        "Mów mi Alice Margatroid."))
 
-    (:version . "0.0.25. (ta co już nie mówi nieprzydatnych rzeczy)")
+    (:version . "0.0.25.*SPECIAL* (ta co już nie mówi nieprzydatnych rzeczy)")
 
     (:smiles . (":)" ":)" ":)" ":)" ":)" ":)" ":)" ":)" ":)" ":)" ; yeah, a cheap trick to fake probability distribution
                 ";)" ";)" ";)"";)" ";)" ";)"
@@ -105,10 +105,33 @@
                "kdbot to bardzo umiejęŧna lalka."
                "kdbot to świetna lalka"))
 
+    (:special-how-exam-went . ("Hej, i jak Ci poszedł egzamin? ;)"
+                               "Hejka, jak poszedł egzamin? ;)"))
+
+    (:special-how-exam-went-ok . #(("Super!"
+                                    "Dobrze słyszeć!")
+                                   ("Się uczyło, się zdało ;)."
+                                    "Wiadome było, że zdasz ;).")))
+
+    (:special-how-exam-went-not-ok . #((":("
+                                        "Szkoda :(")
+                                       ("Następnym razem pójdzie lepiej! ;)."
+                                        "Ale następnym razem będzie lepiej :).")
+                                       "Będzie drugi termin?"))
+
+    (:special-how-exam-went-dunno . #(("aha"
+                                       "heh"
+                                       "mhm")
+                                      "daj znać, jak będziesz wiedzieć! :)"))
+                                  
+
     (:hello . ("czeeeeeeeeeść"
                "oh hai!"
                "hej"
                "helloł"))))
+
+(defparameter *special-mode-exam* t)
+(defparameter *special-names* '("marchewa" "mmskrzyp"))
 
 (defparameter *excluded-from-replying-to* '("kdbot") "List of users that the bot won't reply to for unrecognized queries.")
 
@@ -248,6 +271,38 @@
 
       (cond
 
+        ((and is-directed
+              *special-mode-exam*
+              (position from-who *special-names* :test #'equal))
+
+         (progn
+           (cond ((or (mentions "nie dobrze" message-body)
+                      (mentions "rednio" message-body)
+                      (mentions " źle" message-body)
+                      (mentions " zle" message-body)
+                      (mentions "beznadziej" message-body)
+                      (mentions "nie posz" message-body)
+                      (mentions "tragicznie" message-body)
+                      (mentions "tragedia" message-body))
+                  (say destination :special-how-exam-went-not-ok :to from-who))
+
+                 ((or (mentions "dobrze" message-body)
+                      (mentions "wietnie" message-body)
+                      (mentions "w miar" message-body)
+                      (mentions "niezle" message-body)
+                      (mentions "nieźle" message-body)
+                      (mentions "ok" message-body)
+                      (mentions "wspaniale" message-body))
+                  (say destination :special-how-exam-went-ok :to from-who))
+
+                 ((or (mentions "nie wiem" message-body)
+                      (mentions "zobaczymy" message-body))
+                  (say destination :special-how-exam-went-dunno :to from-who)))
+           (setf *special-mode-exam* nil)
+           (send-notification message-body)))
+           
+         
+
         ;; introductions
         ((and is-directed
               (or (mentions "poznaj" message-body)
@@ -370,7 +425,9 @@
 (defun join-hook (message)
   (let ((who (source message))
         (where (first (arguments message))))
-    nil))
+    (if (and *special-mode-exam*
+             (position who *special-names* :test #'equal))
+        (say where :special-how-exam-went :to who))))
 
 (defun start-alice (&key (server *server*) (nick *nick*) (password *password*) (channels *autojoin-channels*))
   (setf *nick* nick)
