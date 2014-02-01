@@ -48,71 +48,43 @@
 ;; values are read recursively, i.e. encoding a symbol will cause bot to find the proper phrase in
 ;; this alist, and e.g. list of vector means "pick a sequence of things to say at random"
 (defparameter *answers* 
-  '((:introduction . ("Alice Margatroid, do usług."
-                       "Alice Margatroid, kłaniam się ;)."
-                       "Mów mi Alice Margatroid."))
+  '((:introduction . "chi")
 
-    (:version . "0.0.27. (ta co lepiej przekazuje)")
+    (:version . "chi")
 
     (:smiles . (":)" ":)" ":)" ":)" ":)" ":)" ":)" ":)" ":)" ":)" ; yeah, a cheap trick to fake probability distribution
                 ";)" ";)" ";)"";)" ";)" ";)"
                 ":P" ":P" ":P" ":P" ":P"
                 ":>" ":>" ":>"
-                "ta da!"
-                "maka paka!"))
+                "chi"
+                "chi"))
 
-    (:who-in-hs . ("A skąd mam wiedzieć? Spytaj kdbot."
-                   #("Czy wyglądam Ci na odźwierną?.." "!at")
-                   "Nie wiem, spytaj kdbot."
-                   #("kdbot jest od tego." "!at")
-                   "!at"))
+    (:who-in-hs . "chi")
 
-    (:songs . #("♩♫♪♬ http://youtube.com/watch?v=O7SNIeyKbxI ♫♭♪𝅘𝅥𝅯"
-                "Z dedykacją dla Bambuchy :P"))
+    (:songs . #("♩♫♪♬ chi ♫♭♪𝅘𝅥𝅯"
+                "chi"))
 
-    (:thanks-reply . ("you're welcome"
-                      "nie ma za co"
-                      "sure, np."
-                      "np."
-                      "no problem"
-                      ":)"
-                      "spoko :)"))
+    (:thanks-reply . "chi")
 
-    (:tcp . "SYN-ACK")
+    (:tcp . "chi")
 
-    (:temperature . #("pozwól, że spytam kdbot" "!temp"))
+    (:temperature . "chi")
     
-    (:save . (#("pewnie ;)" "!save")
-              #("jasne :)" "!save")
-              "!save"))
+    (:save . "chi")
 
-    (:notification-sent . ("ok, przekazałam"
-                         "jasne, przekazuję"
-                         "sure, już przekazuję"
-                         "przekazane"))
+    (:notification-sent . "chi")
 
-    (:nothing-to-compute . ("Ale co mam obliczyć? Umieść to w cudzysłowiach."
-                            "Co mam przeliczyć? Umieść to w cudzysłowiach."))
+    (:nothing-to-compute . "chi")
 
-    (:nothing-computed . ("Nic się nie policzyło :(."
-                          "Brak wyniku; spytaj o coś innego."
-                          "Nope, nic nie ma."))
+    (:nothing-computed . "chi")
 
-    (:throttled-message . ("... jest tego więcej, wyświetlić?"
-                           "... wyświetlać dalej?"))
+    (:throttled-message . "chi")
 
-    (:kdbot . ("kdbot? jest moją ulubioną lalką."
-               "kdbot to bardzo umiejęŧna lalka."
-               "kdbot to świetna lalka"))
+    (:kdbot . "chi")
 
-    (:notitsforyou . ("Chyba żartujesz."
-                      "Nie pozwalaj sobie na za dużo."
-                      "Może sam pokaż swoje najpierw."))
+    (:notitsforyou . "chi")
 
-    (:hello . ("czeeeeeeeeeść"
-               "oh hai!"
-               "hej"
-               "helloł"))))
+    (:hello . "chi")))
 
 (defparameter *excluded-from-replying-to* '("kdbot") "List of users that the bot won't reply to for unrecognized queries.")
 
