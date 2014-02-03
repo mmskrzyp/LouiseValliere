@@ -104,9 +104,9 @@
                "kdbot to bardzo umiejęŧna lalka."
                "kdbot to świetna lalka"))
 
-    (:notitsforyou . ("Chyba żartujesz."
-                      "Nie pozwalaj sobie na za dużo."
-                      "Może sam pokaż swoje najpierw."))
+    (:notitsforyou . ("Ty zboczeńcu!"
+                      "Zboczeniec!!! Aaaa!!! Zboczeniec!!!"
+                      "Masz jakiś problem? Są małe ale piękne! I nie dla Ciebie!"))
 
     (:hello . ("czeeeeeeeeeść"
                "oh hai!"
