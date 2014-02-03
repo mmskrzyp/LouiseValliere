@@ -48,9 +48,8 @@
 ;; values are read recursively, i.e. encoding a symbol will cause bot to find the proper phrase in
 ;; this alist, and e.g. list of vector means "pick a sequence of things to say at random"
 (defparameter *answers* 
-  '((:introduction . ("Alice Margatroid, do usług."
-                       "Alice Margatroid, kłaniam się ;)."
-                       "Mów mi Alice Margatroid."))
+  '((:introduction . ("Louise Françoise Le Blanc de La Vallière Chevalier Lady-in-waiting Crown Princess of Tristain , do usług."
+                       "Louise Françoise Le Blanc de La Vallière Chevalier Lady-in-waiting Crown Princess of Tristain , kłaniam się ;)."))
 
     (:version . "0.0.27. (ta co lepiej przekazuje)")
 
